@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "live-server public",
     "build": "webpack",
-    "dev-server": "webpack-dev-server --hot"
+    "dev-server": "webpack-dev-server"
   },
   "author": "N Lupton",
   "license": "MIT",
@@ -15,7 +15,8 @@
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-icons": "^2.2.7"
+    "react-icons": "^2.2.7",
+    "react-router-dom": "^4.2.2"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
