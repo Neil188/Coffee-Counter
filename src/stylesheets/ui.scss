@@ -15,8 +15,10 @@ nav.menu {
 }
 
 div.goal-progress {
+  background-color: rgba(255, 255, 255, .2);
+  color: #425e4f;
   width: 95%;
-  margin: 0 2.5%;
+  padding: 0 2.5%;
   font-size: 2em;
   position: absolute;
   bottom: 5em;
@@ -45,7 +47,7 @@ div.goal-progress {
   button {
     font-size: .75em;
     padding: .25em;
-    background-color: green;
+    background-color: #425e4f;
     color: white;
     &:disabled {
       background-color: lightgrey;
@@ -59,7 +61,7 @@ progress::-webkit-progress-bar {
 }
 
 progress::-webkit-progress-value {
-  background-color: #8a2a2d;
+  background-color: #425e4f;
 }
 
 @-moz-document url-prefix() {
@@ -90,7 +92,7 @@ div.coffee-count {
     }
     span,
     svg {
-      background-color: white;
+      background-color: rgba(255, 255, 255, .8);
       height: 100px;
       display: flex;
       justify-content: center;
