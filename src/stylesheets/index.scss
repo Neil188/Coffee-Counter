@@ -1,5 +1,4 @@
 @import "globals";
-
 html,
 body,
 div#react-container,
@@ -9,12 +8,13 @@ div.app {
   margin: 0;
 }
 
-h1, label {
+h1,
+label {
   margin: 0
 }
 
 div.app {
-  background-image: url('http://localhost:3000/rowdy.jpg');
+  background-image: url('/assets/images/coffee.jpg');
   background-size: cover;
   background-position: center;
 }
