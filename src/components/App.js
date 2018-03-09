@@ -9,32 +9,37 @@ export default class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            allCoffeeDays: [
-                {
-                    key: 1,
-                    shop: 'Greggs',
-                    date: '2018-01-01',
-                    takeaway: true,
-                    cake: true,
-                },
-                // {
-                //     key: 2,
-                //     shop: 'Costa',
-                //     date: new Date('2/2/2018'),
-                //     takeaway: false,
-                //     cake: false,
-                // },
-                // {
-                //     key: 3,
-                //     shop: 'Library',
-                //     date: new Date('2/5/2018'),
-                //     takeaway: false,
-                //     cake: true,
-                // },
-            ],
+            allCoffeeDays: [],
+            goal: 10,
         };
         this.countDays = this.countDays.bind(this);
         this.addCoffee = this.addCoffee.bind(this);
+    }
+
+    componentDidMount() {
+        try {
+            const { allCoffeeDays, goal } =
+                JSON.parse(localStorage.getItem('coffeeCounter'));
+
+            if (allCoffeeDays) {
+                this.setState( () => ({
+                    allCoffeeDays, goal,
+                }) );
+            }
+        } catch (e) {
+            // do nothing
+        }
+    }
+
+    componentDidUpdate(prevProps, { allCoffeeDays: prevDays, goal: prevGoal }) {
+        const { allCoffeeDays, goal  } = this.state;
+
+        if (prevDays.length !== allCoffeeDays.length
+            || prevGoal !== goal)
+        {
+            const json = JSON.stringify({allCoffeeDays, goal});
+            localStorage.setItem('coffeeCounter', json);
+        }
     }
 
     addCoffee(newCoffee) {
@@ -55,7 +60,7 @@ export default class App extends Component {
 
     render() {
         // get allCoffeeDays from state
-        const { allCoffeeDays } = this.state;
+        const { allCoffeeDays, goal } = this.state;
         // get pathname and filter from props
         const { location: {pathname}, match: {params: {filter}} } = this.props;
 
@@ -69,6 +74,7 @@ export default class App extends Component {
                         total={this.countDays()}
                         takeaway={this.countDays('takeaway')}
                         cake={this.countDays('cake')}
+                        goal={goal}
                     />
                     :
                     /* addDay route */
