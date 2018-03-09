@@ -30,7 +30,7 @@ const CoffeeCount = ({total, takeaway, cake, goal}) => (
         <div>
             <span>
                 {calcGoalProgress(
-                    total, 
+                    total,
                     goal
                 )}
             </span>
@@ -39,16 +39,16 @@ const CoffeeCount = ({total, takeaway, cake, goal}) => (
 )
 
 CoffeeCount.defaultProps = {
-    total: 0, 
-    takeaway: 0, 
-    cake: 0, 
-    goal: 1,
+    total: 0,
+    takeaway: 0,
+    cake: 0,
+    goal: 100,
 }
 
 CoffeeCount.propTypes = {
     total: PropTypes.number,
-    takeaway: PropTypes.number, 
-    cake: PropTypes.number, 
+    takeaway: PropTypes.number,
+    cake: PropTypes.number,
     goal: PropTypes.number,
 }
 
