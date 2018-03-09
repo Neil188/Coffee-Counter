@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import CoffeeList from './CoffeeList';
 import CoffeeCount from './CoffeeCount';
 import AddCoffeeForm from './AddCoffeeForm';
+import GoalProgress from './GoalProgress'
 import Menu from './Menu';
 
 export default class App extends Component {
@@ -10,13 +11,14 @@ export default class App extends Component {
         super(props);
         this.state = {
             allCoffeeDays: [],
-            goal: 10,
+            goal: 0,
         };
         this.countDays = this.countDays.bind(this);
         this.addCoffee = this.addCoffee.bind(this);
+        this.setGoal = this.setGoal.bind(this);
     }
 
-    componentDidMount() {
+    componentWillMount() {
         try {
             const { allCoffeeDays, goal } =
                 JSON.parse(localStorage.getItem('coffeeCounter'));
@@ -40,6 +42,10 @@ export default class App extends Component {
             const json = JSON.stringify({allCoffeeDays, goal});
             localStorage.setItem('coffeeCounter', json);
         }
+    }
+
+    setGoal(goal) {
+        this.setState({goal})
     }
 
     addCoffee(newCoffee) {
@@ -89,6 +95,12 @@ export default class App extends Component {
                             filter={filter}
                         />
                 }
+
+                <GoalProgress
+                    current={allCoffeeDays.length}
+                    goal={goal}
+                    save={this.setGoal}
+                />
 
             </div>
         )
