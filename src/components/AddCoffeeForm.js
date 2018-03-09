@@ -30,12 +30,16 @@ class AutoComplete extends Component {
                 />
                 <datalist id='list-shops'>
                     {this.props.options.map(
-                        (opt, i) => <option key={i}>{opt}</option>
+                        (opt, i) => <option key={opt}>{opt}</option>
                     )}
                 </datalist>
             </div>
         )
     }
+}
+
+AutoComplete.propTypes = {
+    options: PropTypes.arrayOf(PropTypes.string).isRequired,
 }
 
 // export default class AddCoffeeForm extends Component {
