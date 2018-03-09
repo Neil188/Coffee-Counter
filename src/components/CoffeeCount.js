@@ -6,7 +6,7 @@ import MdLocalDrink from 'react-icons/lib/md/local-drink';
 
 import '../stylesheets/ui.scss';
 
-const percentToDecimal = (decimal) => (`${decimal * 100}%`);
+const percentToDecimal = (decimal) => Math.floor(decimal * 100);
 
 const calcGoalProgress = (total, goal) => percentToDecimal(total/goal);
 
@@ -34,6 +34,7 @@ const CoffeeCount = ({total, takeaway, cake, goal}) => (
                     goal
                 )}
             </span>
+            <span>%</span>
         </div>
     </div>
 )
