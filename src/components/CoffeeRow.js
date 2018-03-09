@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import MdCake from 'react-icons/lib/md/cake';
-import MdLocalDrink from 'react-icons/lib/md/local-drink';
+import MdDirectionsRun from 'react-icons/lib/md/directions-run';
 
 const CoffeeRow = ({shop, date, takeaway, cake}) => (
     <tr>
@@ -12,7 +12,7 @@ const CoffeeRow = ({shop, date, takeaway, cake}) => (
             {shop}
         </td>
         <td>
-            {takeaway && <MdLocalDrink />}
+            {takeaway && <MdDirectionsRun />}
         </td>
         <td>
             {cake && <MdCake />}

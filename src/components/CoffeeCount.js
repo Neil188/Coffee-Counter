@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import FaCoffee from 'react-icons/lib/fa/coffee';
 import MdCake from 'react-icons/lib/md/cake';
-import MdLocalDrink from 'react-icons/lib/md/local-drink';
+import MdDirectionsRun from 'react-icons/lib/md/directions-run';
 
 import '../stylesheets/ui.scss';
 
@@ -19,7 +19,7 @@ const CoffeeCount = ({total, takeaway, cake, goal}) => (
         </div>
         <div className="takeaway-cups">
             <span>{takeaway}</span>
-            <MdLocalDrink />
+            <MdDirectionsRun />
             <span>days</span>
         </div>
         <div className="cake">
