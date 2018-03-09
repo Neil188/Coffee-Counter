@@ -1,8 +1,11 @@
 import React from 'react';
 import { render } from 'react-dom';
-import App from './components/app';
+import Routes from './routes';
 
-render( 
-    <App />,
+import './stylesheets/ui.scss';
+import './stylesheets/index.scss';
+
+render(
+    <Routes />,
     document.getElementById('react-container')
 )
