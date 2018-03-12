@@ -7,24 +7,19 @@ const calcGoalProgress = (total, goal) =>
 
 export default class GoalProgress extends Component {
 
-    constructor(props) {
-        super(props)
-        this.state = {
-            goal: 0,
-            progress: 0,
-        }
-        this.newGoal = this.newGoal.bind(this)
-        this.saveGoal = this.saveGoal.bind(this)
+    state = {
+        goal: 0,
+        progress: 0,
     }
 
-    componentDidMount(){
+    componentDidMount = () => {
         this.setState({
             goal: this.props.goal,
             progress: calcGoalProgress(this.props.current,this.props.goal),
         })
     }
 
-    componentWillReceiveProps(nextProps) {
+    componentWillReceiveProps = (nextProps) => {
         if (nextProps.current !== this.props.current) {
             this.setState({
                 progress: calcGoalProgress(nextProps.current, this.props.goal) || 0,
@@ -32,12 +27,12 @@ export default class GoalProgress extends Component {
         }
     }
 
-    shouldComponentUpdate(nextProps, nextState) {
-        return !(JSON.stringify(nextState) === JSON.stringify(this.state))
-            || !(JSON.stringify(nextProps) === JSON.stringify(this.props))
-    }
+    shouldComponentUpdate = (nextProps, nextState) =>
+        !(JSON.stringify(nextState) === JSON.stringify(this.state))
+        || !(JSON.stringify(nextProps) === JSON.stringify(this.props))
 
-    newGoal() {
+
+    newGoal= () => {
         const goal = parseInt(this.numberInput.value,10)
         this.setState({
             goal,
@@ -45,9 +40,8 @@ export default class GoalProgress extends Component {
         })
     }
 
-    saveGoal() {
+    saveGoal = () =>
         this.props.save(this.state.goal)
-    }
 
     render() {
 

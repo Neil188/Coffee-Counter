@@ -7,18 +7,12 @@ import GoalProgress from './GoalProgress'
 import Menu from './Menu';
 
 export default class App extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            allCoffeeDays: [],
-            goal: 0,
-        };
-        this.countDays = this.countDays.bind(this);
-        this.addCoffee = this.addCoffee.bind(this);
-        this.setGoal = this.setGoal.bind(this);
-    }
+    state = {
+        allCoffeeDays: [],
+        goal: 0,
+    };
 
-    componentWillMount() {
+    componentWillMount = () => {
         try {
             const { allCoffeeDays, goal } =
                 JSON.parse(localStorage.getItem('coffeeCounter'));
@@ -33,22 +27,23 @@ export default class App extends Component {
         }
     }
 
-    componentDidUpdate(prevProps, { allCoffeeDays: prevDays, goal: prevGoal }) {
-        const { allCoffeeDays, goal  } = this.state;
+    componentDidUpdate =
+        (prevProps, { allCoffeeDays: prevDays, goal: prevGoal }) => {
+            const { allCoffeeDays, goal  } = this.state;
 
-        if (prevDays.length !== allCoffeeDays.length
+            if (prevDays.length !== allCoffeeDays.length
             || prevGoal !== goal)
-        {
-            const json = JSON.stringify({allCoffeeDays, goal});
-            localStorage.setItem('coffeeCounter', json);
+            {
+                const json = JSON.stringify({allCoffeeDays, goal});
+                localStorage.setItem('coffeeCounter', json);
+            }
         }
-    }
 
-    setGoal(goal) {
+    setGoal = (goal) => {
         this.setState({goal})
     }
 
-    addCoffee(newCoffee) {
+    addCoffee = (newCoffee) => {
         this.setState({
             allCoffeeDays: [
                 ...this.state.allCoffeeDays,
@@ -57,7 +52,7 @@ export default class App extends Component {
         });
     }
 
-    countDays (filter) {
+    countDays = (filter) => {
         const { allCoffeeDays } = this.state;
         return allCoffeeDays
             .filter( day => (filter) ? day[filter] : day)
