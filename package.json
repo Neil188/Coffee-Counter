@@ -4,8 +4,8 @@
   "description": "Coffee Counter app for React.js Essential Training",
   "main": "index.js",
   "scripts": {
-    "dev": "live-server public",
     "build": "webpack",
+    "serve": "npx serve -s dist",
     "dev-server": "webpack-dev-server"
   },
   "author": "N Lupton",
