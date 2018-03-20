@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import SaveIcon from 'react-icons/lib/fa/floppy-o';
 
-const calcGoalProgress = (total, goal) =>
-    Math.floor((total / goal) * 100);
+const calcGoalProgress = (total=0, goal=0) =>
+    goal<=0 ? 100 : Math.floor((total / goal) * 100);
 
 export default class GoalProgress extends Component {
 
@@ -31,13 +31,13 @@ export default class GoalProgress extends Component {
         !(JSON.stringify(nextState) === JSON.stringify(this.state))
         || !(JSON.stringify(nextProps) === JSON.stringify(this.props))
 
-
     newGoal= () => {
-        const goal = parseInt(this.numberInput.value,10)
+        let goal = parseInt(this.numberInput.value,10);
+        goal = Number.isNaN(goal) ? 0 : goal;
         this.setState({
             goal,
             progress: calcGoalProgress(this.props.current, goal),
-        })
+        });
     }
 
     saveGoal = () =>
