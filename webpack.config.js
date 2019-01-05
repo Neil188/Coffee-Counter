@@ -2,7 +2,10 @@ const webpack = require('webpack');
 const path = require('path');
 const autoprefixer = require('autoprefixer');
 
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+
 module.exports = {
+    mode: process.env.NODE_ENV,
     entry: './src/index.js',
     output: {
         path: path.join(__dirname, "/dist/assets"),
@@ -19,11 +22,11 @@ module.exports = {
                 test: /\.s?css$/,
                 use: ['style-loader',
                     'css-loader',
-                    { loader: 'postcss-loader', 
-                        options: { plugins: [autoprefixer]}, 
+                    { loader: 'postcss-loader',
+                        options: { plugins: [autoprefixer]},
                     },
                     'sass-loader'],
-            },          
+            },
         ],
     },
     devtool: 'cheap-module-eval-source-map',
