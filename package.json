@@ -1,6 +1,6 @@
 {
     "name": "coffeecounter",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "Coffee Counter app for React.js Essential Training",
     "main": "index.js",
     "scripts": {
